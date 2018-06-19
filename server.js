@@ -1,5 +1,6 @@
 const grpc = require('grpc');
-const helloProto = grpc.load('hello.proto').hello;
+const protoLoader = require('@grpc/proto-loader')
+const helloProto = grpc.loadPackageDefinition(protoLoader.loadSync('hello.proto', {/* options */})).hello
 
 function sayHello(call, callback) {
   console.log('got hello', call.request)
