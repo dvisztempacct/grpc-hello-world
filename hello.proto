@@ -1,19 +1,12 @@
 syntax = "proto3";
 package hello;
 
-enum Mood {
-  Happy = 0;
-  Sad = 1;
-}
-
 service Greeter {
   rpc SayHello (HelloRequest) returns (HelloReply) {}
 }
 message HelloRequest {
   string name = 1;
-  Mood mood = 2;
 }
 message HelloReply {
   string message = 1;
-  Mood mood = 2;
 }

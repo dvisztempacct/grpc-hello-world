@@ -3,8 +3,10 @@ const helloProto = grpc.load('hello.proto').hello;
 
 function sayHello(call, callback) {
   console.log('got hello', call.request)
-  callback(null, {message: "hello " + call.request.name, mood: call.request.mood})
-  console.log('replied')
+  const message = 'name' in call.request
+  ? "hello " + call.request.name
+  : "uhhhh...."
+  callback(null, { message })
 }
 
 function main() {
